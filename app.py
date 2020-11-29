@@ -35,9 +35,9 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, FollowEvent, TextMessage, TextSendMessage, SourceUser, TemplateSendMessage,
     MessageAction, ConfirmTemplate, ButtonsTemplate)
-import resources
-import handlers
-from database import (post_sql_query, create_userdata_table,
+import tools.resources
+import tools.handlers
+from tools.database import (post_sql_query, create_userdata_table,
                         user_in_db, save_reply_to_db)
 
 app = Flask(__name__)

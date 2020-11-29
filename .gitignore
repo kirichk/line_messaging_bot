@@ -2,3 +2,4 @@ __pycache__/
 linebot/
 env/
 my.db
+static/
