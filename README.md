@@ -1,7 +1,3 @@
-# Flask KitchenSink
-
-Sample bot using [Flask](http://flask.pocoo.org/)
-
 ## Getting started
 
 ```
