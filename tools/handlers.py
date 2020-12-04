@@ -9,9 +9,9 @@ import time
 import json
 import os
 import sys
-import resources
+import tools.resources as resources
 import requests
-from database import (post_sql_query, create_userdata_table,
+from tools.database import (post_sql_query, create_userdata_table,
                         user_in_db, save_reply_to_db, grab_all_data)
 
 
@@ -106,28 +106,53 @@ def message_handler(event, stage, current_user, text):
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
     if stage == '10':
         time.sleep(2)
-        line_bot_api.reply_message(
-            event.reply_token,TextSendMessage(text=resources.sentence10))
+        buttons_template = ButtonsTemplate(text=resources.sentence10, actions=[
+                MessageAction(label='ข้าม',
+                                text='ข้าม')
+            ])
+        template_message = TemplateSendMessage(
+            alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token,template_message)
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
     if stage == '11':
         time.sleep(2)
-        line_bot_api.reply_message(
-            event.reply_token,TextSendMessage(text=resources.sentence11))
+        buttons_template = ButtonsTemplate(text=resources.sentence11, actions=[
+                MessageAction(label='ข้าม',
+                                text='ข้าม')
+            ])
+        template_message = TemplateSendMessage(
+            alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token,template_message)
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
     if stage == '12':
         time.sleep(2)
-        line_bot_api.reply_message(
-            event.reply_token,TextSendMessage(text=resources.sentence12))
+        buttons_template = ButtonsTemplate(text=resources.sentence12, actions=[
+                MessageAction(label='ข้าม',
+                                text='ข้าม')
+            ])
+        template_message = TemplateSendMessage(
+            alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token,template_message)
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
     if stage == '13':
         time.sleep(2)
-        line_bot_api.reply_message(
-            event.reply_token,TextSendMessage(text=resources.sentence13))
+        buttons_template = ButtonsTemplate(text=resources.sentence13, actions=[
+                MessageAction(label='ข้าม',
+                                text='ข้าม')
+            ])
+        template_message = TemplateSendMessage(
+            alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token,template_message)
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
     if stage == '14':
         time.sleep(2)
-        line_bot_api.reply_message(
-            event.reply_token,TextSendMessage(text=resources.sentence14))
+        buttons_template = ButtonsTemplate(text=resources.sentence14, actions=[
+                MessageAction(label='ข้าม',
+                                text='ข้าม')
+            ])
+        template_message = TemplateSendMessage(
+            alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token,template_message)
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
     if stage == '15':
         time.sleep(2)
@@ -207,8 +232,36 @@ def message_handler(event, stage, current_user, text):
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
     if stage == '18':
         time.sleep(2)
+        buttons_template = ButtonsTemplate(text=resources.sentence18, actions=[
+                MessageAction(label=resources.answer18[0],
+                                text=resources.answer18[0]),
+                MessageAction(label=resources.answer18[1],
+                                text=resources.answer18[1]),
+                MessageAction(label=resources.answer18[2],
+                                text=resources.answer18[2]),
+                MessageAction(label=resources.answer18[3],
+                                text=resources.answer18[3])
+            ])
+        template_message = TemplateSendMessage(
+            alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
+        save_reply_to_db(stage_num=stage, answer=text, user=current_user)
+    if stage == '19':
+        time.sleep(2)
+        buttons_template = ButtonsTemplate(text=resources.sentence19, actions=[
+                MessageAction(label=resources.answer19[0],
+                                text=resources.answer19[0]),
+                MessageAction(label=resources.answer19[1],
+                                text=resources.answer19[1])
+            ])
+        template_message = TemplateSendMessage(
+            alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
+        save_reply_to_db(stage_num=stage, answer=text, user=current_user)
+    if stage == '20':
+        time.sleep(2)
         line_bot_api.push_message(
-            current_user, TextSendMessage(text=resources.sentence18))
+            current_user, TextSendMessage(text=resources.sentence20))
         time.sleep(2)
         bubble = BubbleContainer(
             size='kilo',
@@ -217,44 +270,44 @@ def message_handler(event, stage, current_user, text):
                 layout='vertical',
                 spacing='sm',
                 contents=[
-                    TextComponent(text=resources.sentence18_1,
+                    TextComponent(text=resources.sentence20_1,
                                     wrap=True),
                     SeparatorComponent(),
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=MessageAction(label=resources.answer18[0],
-                                            text=resources.answer18[0]),
+                        action=MessageAction(label=resources.answer20[0],
+                                            text=resources.answer20[0]),
                     ),
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=MessageAction(label=resources.answer18[1],
-                                            text=resources.answer18[1])
+                        action=MessageAction(label=resources.answer20[1],
+                                            text=resources.answer20[1])
                     ),
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=MessageAction(label=resources.answer18[2],
-                                            text=resources.answer18[2])
+                        action=MessageAction(label=resources.answer20[2],
+                                            text=resources.answer20[2])
                     ),
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=MessageAction(label=resources.answer18[3],
-                                            text=resources.answer18[3])
+                        action=MessageAction(label=resources.answer20[3],
+                                            text=resources.answer20[3])
                     ),
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=MessageAction(label=resources.answer18[4],
-                                            text=resources.answer18[4])
+                        action=MessageAction(label=resources.answer20[4],
+                                            text=resources.answer20[4])
                     ),
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=MessageAction(label=resources.answer18[5],
-                                            text=resources.answer18[5])
+                        action=MessageAction(label=resources.answer20[5],
+                                            text=resources.answer20[5])
                     )
                 ]
             ),
@@ -262,9 +315,9 @@ def message_handler(event, stage, current_user, text):
         message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
         line_bot_api.reply_message(event.reply_token,message)
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
-    if stage == '19':
+    if stage == '21':
         time.sleep(2)
-        if text == resources.answer18[0]:
+        if text == resources.answer20[0].replace('+',' '):
             bubble = BubbleContainer(
                 size='kilo',
                 direction='ltr',
@@ -276,20 +329,20 @@ def message_handler(event, stage, current_user, text):
                     layout='vertical',
                     spacing='sm',
                     contents=[
-                        TextComponent(text=resources.sentence19_1,
+                        TextComponent(text=resources.sentence21_1,
                                         wrap=True),
                         ButtonComponent(
                         style='link',
                         height='sm',
-                        action=MessageAction(label=resources.answer19[0],
-                                            text=resources.answer19[0])
+                        action=MessageAction(label=resources.answer21[0],
+                                            text=resources.answer21[0])
                         )
                     ]
                 ),
             )
             message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
             line_bot_api.reply_message(event.reply_token,message)
-        if text == resources.answer18[1]:
+        if text == resources.answer20[1].replace('+',' '):
             bubble = BubbleContainer(
                 size='kilo',
                 direction='ltr',
@@ -301,20 +354,20 @@ def message_handler(event, stage, current_user, text):
                     layout='vertical',
                     spacing='sm',
                     contents=[
-                        TextComponent(text=resources.sentence19_2,
+                        TextComponent(text=resources.sentence21_2,
                                         wrap=True),
                         ButtonComponent(
                         style='link',
                         height='sm',
-                        action=MessageAction(label=resources.answer19[0],
-                                            text=resources.answer19[0])
+                        action=MessageAction(label=resources.answer21[0],
+                                            text=resources.answer21[0])
                         )
                     ]
                 ),
             )
             message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
             line_bot_api.reply_message(event.reply_token,message)
-        if text == resources.answer18[2]:
+        if text == resources.answer20[2].replace('+',' '):
             bubble = BubbleContainer(
                 size='kilo',
                 direction='ltr',
@@ -326,20 +379,20 @@ def message_handler(event, stage, current_user, text):
                     layout='vertical',
                     spacing='sm',
                     contents=[
-                        TextComponent(text=resources.sentence19_3,
+                        TextComponent(text=resources.sentence21_3,
                                         wrap=True),
                         ButtonComponent(
                         style='link',
                         height='sm',
-                        action=MessageAction(label=resources.answer19[0],
-                                            text=resources.answer19[0])
+                        action=MessageAction(label=resources.answer21[0],
+                                            text=resources.answer21[0])
                         )
                     ]
                 ),
             )
             message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
             line_bot_api.reply_message(event.reply_token,message)
-        if text == resources.answer18[3]:
+        if text == resources.answer20[3].replace('+',' '):
             bubble = BubbleContainer(
                 size='kilo',
                 direction='ltr',
@@ -351,20 +404,20 @@ def message_handler(event, stage, current_user, text):
                     layout='vertical',
                     spacing='sm',
                     contents=[
-                        TextComponent(text=resources.sentence19_4,
+                        TextComponent(text=resources.sentence21_4,
                                         wrap=True),
                         ButtonComponent(
                         style='link',
                         height='sm',
-                        action=MessageAction(label=resources.answer19[0],
-                                            text=resources.answer19[0])
+                        action=MessageAction(label=resources.answer21[0],
+                                            text=resources.answer21[0])
                         )
                     ]
                 ),
             )
             message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
             line_bot_api.reply_message(event.reply_token,message)
-        if text == resources.answer18[4]:
+        if text == resources.answer20[4].replace('+',' '):
             bubble = BubbleContainer(
                 size='kilo',
                 direction='ltr',
@@ -376,20 +429,20 @@ def message_handler(event, stage, current_user, text):
                     layout='vertical',
                     spacing='sm',
                     contents=[
-                        TextComponent(text=resources.sentence19_5,
+                        TextComponent(text=resources.sentence21_5,
                                         wrap=True),
                         ButtonComponent(
                         style='link',
                         height='sm',
-                        action=MessageAction(label=resources.answer19[0],
-                                            text=resources.answer19[0])
+                        action=MessageAction(label=resources.answer21[0],
+                                            text=resources.answer21[0])
                         )
                     ]
                 ),
             )
             message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
             line_bot_api.reply_message(event.reply_token,message)
-        if text == resources.answer18[5]:
+        if text == resources.answer20[5].replace('+',' '):
             bubble = BubbleContainer(
                 size='kilo',
                 direction='ltr',
@@ -401,13 +454,13 @@ def message_handler(event, stage, current_user, text):
                     layout='vertical',
                     spacing='sm',
                     contents=[
-                        TextComponent(text=resources.sentence19_6,
+                        TextComponent(text=resources.sentence21_6,
                                         wrap=True),
                         ButtonComponent(
                         style='link',
                         height='sm',
-                        action=MessageAction(label=resources.answer19[0],
-                                            text=resources.answer19[0])
+                        action=MessageAction(label=resources.answer21[0],
+                                            text=resources.answer21[0])
                         )
                     ]
                 ),
@@ -415,7 +468,7 @@ def message_handler(event, stage, current_user, text):
             message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
             line_bot_api.reply_message(event.reply_token,message)
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
-    if stage == '20':
+    if stage == '22':
         time.sleep(2)
         line_bot_api.push_message(current_user, TextSendMessage(
                                         text=resources.follow_up1))
@@ -435,58 +488,6 @@ def message_handler(event, stage, current_user, text):
                     ButtonComponent(
                     style='link',
                     height='sm',
-                    action=MessageAction(label=resources.answer20[0],
-                                        text=resources.answer20[0])
-                    )
-                ]
-            ),
-        )
-        message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
-        line_bot_api.push_message(current_user,message)
-        save_reply_to_db(stage_num=stage, answer=text, user=current_user)
-    if stage == '21':
-        time.sleep(2)
-        line_bot_api.push_message(current_user, TextSendMessage(
-                                        text=resources.follow_up4))
-        time.sleep(2)
-        line_bot_api.push_message(current_user, TextSendMessage(
-                                        text=resources.follow_up5))
-        bubble = BubbleContainer(
-            size='kilo',
-            direction='ltr',
-            body=BoxComponent(
-                layout='vertical',
-                spacing='sm',
-                contents=[
-                    ButtonComponent(
-                    style='link',
-                    height='sm',
-                    action=MessageAction(label=resources.answer21[0],
-                                        text=resources.answer21[0])
-                    )
-                ]
-            ),
-        )
-        message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
-        line_bot_api.push_message(current_user,message)
-        save_reply_to_db(stage_num=stage, answer=text, user=current_user)
-    if stage == '22':
-        time.sleep(2)
-        line_bot_api.push_message(current_user, TextSendMessage(
-                                        text=resources.follow_up6))
-        time.sleep(2)
-        line_bot_api.push_message(current_user, TextSendMessage(
-                                        text=resources.follow_up7))
-        bubble = BubbleContainer(
-            size='kilo',
-            direction='ltr',
-            body=BoxComponent(
-                layout='vertical',
-                spacing='sm',
-                contents=[
-                    ButtonComponent(
-                    style='link',
-                    height='sm',
                     action=MessageAction(label=resources.answer22[0],
                                         text=resources.answer22[0])
                     )
@@ -499,10 +500,10 @@ def message_handler(event, stage, current_user, text):
     if stage == '23':
         time.sleep(2)
         line_bot_api.push_message(current_user, TextSendMessage(
-                                        text=resources.follow_up8))
+                                        text=resources.follow_up4))
         time.sleep(2)
         line_bot_api.push_message(current_user, TextSendMessage(
-                                        text=resources.follow_up9))
+                                        text=resources.follow_up5))
         bubble = BubbleContainer(
             size='kilo',
             direction='ltr',
@@ -523,6 +524,58 @@ def message_handler(event, stage, current_user, text):
         line_bot_api.push_message(current_user,message)
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
     if stage == '24':
+        time.sleep(2)
+        line_bot_api.push_message(current_user, TextSendMessage(
+                                        text=resources.follow_up6))
+        time.sleep(2)
+        line_bot_api.push_message(current_user, TextSendMessage(
+                                        text=resources.follow_up7))
+        bubble = BubbleContainer(
+            size='kilo',
+            direction='ltr',
+            body=BoxComponent(
+                layout='vertical',
+                spacing='sm',
+                contents=[
+                    ButtonComponent(
+                    style='link',
+                    height='sm',
+                    action=MessageAction(label=resources.answer24[0],
+                                        text=resources.answer24[0])
+                    )
+                ]
+            ),
+        )
+        message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
+        line_bot_api.push_message(current_user,message)
+        save_reply_to_db(stage_num=stage, answer=text, user=current_user)
+    if stage == '25':
+        time.sleep(2)
+        line_bot_api.push_message(current_user, TextSendMessage(
+                                        text=resources.follow_up8))
+        time.sleep(2)
+        line_bot_api.push_message(current_user, TextSendMessage(
+                                        text=resources.follow_up9))
+        bubble = BubbleContainer(
+            size='kilo',
+            direction='ltr',
+            body=BoxComponent(
+                layout='vertical',
+                spacing='sm',
+                contents=[
+                    ButtonComponent(
+                    style='link',
+                    height='sm',
+                    action=MessageAction(label=resources.answer25[0],
+                                        text=resources.answer25[0])
+                    )
+                ]
+            ),
+        )
+        message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
+        line_bot_api.push_message(current_user,message)
+        save_reply_to_db(stage_num=stage, answer=text, user=current_user)
+    if stage == '26':
         time.sleep(2)
         line_bot_api.push_message(current_user, TextSendMessage(
                                         text=resources.follow_up10))
@@ -553,8 +606,8 @@ def message_handler(event, stage, current_user, text):
                     ButtonComponent(
                     style='link',
                     height='sm',
-                    action=MessageAction(label=resources.answer24[0],
-                                        text=resources.answer24[0])
+                    action=MessageAction(label=resources.answer26[0],
+                                        text=resources.answer26[0])
                     )
                 ]
             )
@@ -562,56 +615,10 @@ def message_handler(event, stage, current_user, text):
         message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
         line_bot_api.push_message(current_user,message)
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
-    if stage == '25':
-        time.sleep(2)
-        line_bot_api.push_message(current_user, TextSendMessage(
-                                        text=resources.follow_up11))
-        bubble = BubbleContainer(
-            size='kilo',
-            direction='ltr',
-            body=BoxComponent(
-                layout='vertical',
-                spacing='sm',
-                contents=[
-                    ButtonComponent(
-                    style='link',
-                    height='sm',
-                    action=MessageAction(label=resources.answer25[0],
-                                        text=resources.answer25[0])
-                    )
-                ]
-            ),
-        )
-        message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
-        line_bot_api.push_message(current_user,message)
-        save_reply_to_db(stage_num=stage, answer=text, user=current_user)
-    if stage == '26':
-        time.sleep(2)
-        line_bot_api.push_message(current_user, TextSendMessage(
-                                        text=resources.follow_up12))
-        bubble = BubbleContainer(
-            size='kilo',
-            direction='ltr',
-            body=BoxComponent(
-                layout='vertical',
-                spacing='sm',
-                contents=[
-                    ButtonComponent(
-                    style='link',
-                    height='sm',
-                    action=MessageAction(label=resources.answer26[0],
-                                        text=resources.answer26[0])
-                    )
-                ]
-            ),
-        )
-        message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
-        line_bot_api.push_message(current_user,message)
-        save_reply_to_db(stage_num=stage, answer=text, user=current_user)
     if stage == '27':
         time.sleep(2)
         line_bot_api.push_message(current_user, TextSendMessage(
-                                        text=resources.follow_up13))
+                                        text=resources.follow_up11))
         bubble = BubbleContainer(
             size='kilo',
             direction='ltr',
@@ -634,6 +641,52 @@ def message_handler(event, stage, current_user, text):
     if stage == '28':
         time.sleep(2)
         line_bot_api.push_message(current_user, TextSendMessage(
+                                        text=resources.follow_up12))
+        bubble = BubbleContainer(
+            size='kilo',
+            direction='ltr',
+            body=BoxComponent(
+                layout='vertical',
+                spacing='sm',
+                contents=[
+                    ButtonComponent(
+                    style='link',
+                    height='sm',
+                    action=MessageAction(label=resources.answer28[0],
+                                        text=resources.answer28[0])
+                    )
+                ]
+            ),
+        )
+        message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
+        line_bot_api.push_message(current_user,message)
+        save_reply_to_db(stage_num=stage, answer=text, user=current_user)
+    if stage == '29':
+        time.sleep(2)
+        line_bot_api.push_message(current_user, TextSendMessage(
+                                        text=resources.follow_up13))
+        bubble = BubbleContainer(
+            size='kilo',
+            direction='ltr',
+            body=BoxComponent(
+                layout='vertical',
+                spacing='sm',
+                contents=[
+                    ButtonComponent(
+                    style='link',
+                    height='sm',
+                    action=MessageAction(label=resources.answer29[0],
+                                        text=resources.answer29[0])
+                    )
+                ]
+            ),
+        )
+        message = FlexSendMessage(alt_text="Buttons alt text", contents=bubble)
+        line_bot_api.push_message(current_user,message)
+        save_reply_to_db(stage_num=stage, answer=text, user=current_user)
+    if stage == '30':
+        time.sleep(2)
+        line_bot_api.push_message(current_user, TextSendMessage(
                                         text=resources.follow_up14))
         time.sleep(2)
         line_bot_api.push_message(current_user, TextSendMessage(
@@ -648,7 +701,7 @@ def message_handler(event, stage, current_user, text):
             "contents": [
               {
                 "type": "image",
-                "url": "https://nature-tricks.com/wp-content/uploads/2020/05/keto-eat-fit-capsules-review.jpg",
+                "url": "https://i.ibb.co/C6mSghT/2222.jpg",
                 "position": "relative",
                 "size": "full",
                 "aspectMode": "cover",
@@ -678,14 +731,14 @@ def message_handler(event, stage, current_user, text):
                     "contents": [
                       {
                         "type": "text",
-                        "text": "$200",
+                        "text": "1980฿",
                         "color": "#a9a9a9",
                         "decoration": "line-through",
                         "align": "end"
                       },
                       {
                         "type": "text",
-                        "text": "$100",
+                        "text": "990฿",
                         "color": "#ebebeb",
                         "size": "xl",
                         "align": "end"
@@ -731,60 +784,41 @@ def message_handler(event, stage, current_user, text):
         )
         time.sleep(2)
         line_bot_api.push_message(
-            current_user,TextSendMessage(text=resources.sentence20))
+            current_user,TextSendMessage(text=resources.sentence22))
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
-    if stage == '29':
+    if stage == '31':
         time.sleep(2)
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
         line_bot_api.reply_message(
-            event.reply_token,TextSendMessage(text=resources.sentence21))
+            event.reply_token,TextSendMessage(text=resources.sentence23))
         all_data = grab_all_data(user=current_user)[0]
-        # result = ''
-        # for column in all_data:
-        #     try:
-        #         result.join(str(column)+'\n')
-        #     except TypeError:
-        #         continue
         phone = all_data[-1]
         name = all_data[2]
-        # zodiac_sign = f'Возраст: {all_data[4]}; '\
-        #             f'Пол: {all_data[5]}; '\
-        #             f'Вес: {all_data[6]}; '\
-        #             f'Рост: {all_data[7]}; '\
-        #             f'Занимается спортом: {all_data[8]}; '\
-        #             f'Времени спит: {all_data[9]}; '\
-        #             f'Легко просыпается: {all_data[10]}; '\
-        #             f'Энергии под конец дня: {all_data[11]}; '\
-        #             f'Приемов пищи: {all_data[12]}; '\
-        #             f'Рацион: {all_data[13]}; '\
-        #             f'Алкоголь: {all_data[14]}; '\
-        #             f'Диеты: {all_data[15]}; '\
-        #             f'Аллергии: {all_data[16]};'\
-        #             f'Регулярный стул: {all_data[17]}; '\
-        #             f'Области тела исправить: {all_data[18]}; '\
-        #             f'Самочувствие: {all_data[19]};'
-        zodiac_sign = f'Возраст: {all_data[4]}; '\
+        sex = all_data[5]
+        comment = f'Возраст: {all_data[4]}; '\
                     f'Вес: {all_data[6]}; '\
-                    f'Рост: {all_data[7]}; '
-                    # f'Занимается спортом: {all_data[8]}; '\
-                    # f'Времени спит: {all_data[9]}; '\
-                    # f'Легко просыпается: {all_data[10]}; '\
-                    # f'Энергии под конец дня: {all_data[11]}; '\
-                    # f'Приемов пищи: {all_data[12]}; '\
-                    # f'Рацион: {all_data[13]}; '\
-                    # f'Алкоголь: {all_data[14]}; '\
-                    # f'Диеты: {all_data[15]}; '\
-                    # f'Аллергии: {all_data[16]};'\
-                    # f'Регулярный стул: {all_data[17]}; '\
-                    # f'Области тела исправить: {all_data[18]}; '\
-                    # f'Самочувствие: {all_data[19]};'
+                    f'Рост: {all_data[7]}; '\
+                    f'Занимается спортом: {all_data[8]}; '\
+                    f'Времени спит: {all_data[9]}; '\
+                    f'Легко просыпается: {all_data[10]}; '\
+                    f'Энергии под конец дня: {all_data[11]}; '\
+                    f'Приемов пищи: {all_data[12]}; '\
+                    f'Рацион: {all_data[13]}; '\
+                    f'Алкоголь: {all_data[14]}; '\
+                    f'Диеты: {all_data[15]}; '\
+                    f'Аллергии: {all_data[16]};'\
+                    f'Регулярный стул: {all_data[17]}; '\
+                    f'Области тела исправить: {all_data[18]}; '\
+                    f'Хочет похудеть: {all_data[19]}; '\
+                    f'Предрасположенность к полноте: {all_data[20]}; '\
+                    f'Самочувствие: {all_data[21]};'
 
         reply = {
             'name': name,
             'phone': phone,
-            'sex': 'Мужчина',
-            'zodiac_sign': zodiac_sign,
-            'campaign_id':'964667',
+            'sex': sex,
+            'comment': comment,
+            'campaign_id':'967987',
             'sid1':'5901',
             'redirect_url':'https://line.me/en/'
         }

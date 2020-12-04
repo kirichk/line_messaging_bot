@@ -30,7 +30,8 @@ def create_userdata_table():
                         stage19 TEXT,stage20 TEXT,stage21 TEXT,
                         stage22 TEXT,stage23 TEXT,stage24 TEXT,
                         stage25 TEXT,stage26 TEXT,stage27 TEXT,
-                        stage28 TEXT,stage29 TEXT);'''
+                        stage28 TEXT,stage29 TEXT, stage30 TEXT,
+                        stage31 TEXT);'''
     post_sql_query(orders_query)
 
 
@@ -48,13 +49,12 @@ def grab_all_data(user):
 
 
 def save_reply_to_db(stage_num, answer, user):
-    if stage_num == 'end':
-        query = f'UPDATE USERDATA SET current_stage = "{2}" '\
-                f'WHERE user_id = "{user}";'
+    stage = 'stage' + stage_num
+    if stage_num == '31':
+        next_stage = '3'
     else:
-        stage = 'stage' + stage_num
         next_stage = str(int(stage_num)+1)
-        query = f'UPDATE USERDATA SET {stage} = "{answer}", '\
-                f'current_stage = "{next_stage}" '\
-                f'WHERE user_id = "{user}";'
+    query = f'UPDATE USERDATA SET {stage} = "{answer}", '\
+            f'current_stage = "{next_stage}" '\
+            f'WHERE user_id = "{user}";'
     post_sql_query(query)

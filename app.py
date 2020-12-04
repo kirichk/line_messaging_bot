@@ -35,8 +35,8 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, FollowEvent, TextMessage, TextSendMessage, SourceUser, TemplateSendMessage,
     MessageAction, ConfirmTemplate, ButtonsTemplate)
-import tools.resources
-import tools.handlers
+import tools.resources as resources
+import tools.handlers as handlers
 from tools.database import (post_sql_query, create_userdata_table,
                         user_in_db, save_reply_to_db)
 
@@ -105,7 +105,7 @@ def handle_text_message(event):
         line_bot_api.push_message(
             current_user, TextSendMessage(text=resources.sentence2_1))
         sql_query = f'INSERT INTO USERDATA (user_id, current_stage, stage1) '\
-                    f'VALUES ("{current_user}","3","{text}");'
+                    f'VALUES ("{current_user}","28","{text}");'
         post_sql_query(sql_query)
 
 
