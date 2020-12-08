@@ -795,18 +795,31 @@ def message_handler(event, stage, current_user, text):
         phone = all_data[-1]
         name = all_data[2]
         sex = all_data[5]
+        s9 = ''
+        s10 = ''
+        s11 = ''
+        s12 = ''
+        s13 = ''
+        s14 = ''
+        s15 = ''
+        if all_data[9] != 'ข้าม':
+            s9 = f'Времени спит: {all_data[9]}; '
+        if all_data[10] != 'ข้าม':
+            s10 = f'Легко просыпается: {all_data[10]}; '
+        if all_data[11] != 'ข้าม':
+            s11 = f'Энергии под конец дня: {all_data[11]}; '
+        if all_data[12] != 'ข้าม':
+            s12 = f'Приемов пищи: {all_data[12]}; '
+        if all_data[13] != 'ข้าม':
+            s13 = f'Рацион: {all_data[13]}; '
+        if all_data[14] != 'ข้าม':
+            s14 = f'Алкоголь: {all_data[14]}; '
+        if all_data[15] != 'ข้าม':
+            s15 = f'Диеты: {all_data[15]}; '
         comment = f'Возраст: {all_data[4]}; '\
                     f'Вес: {all_data[6]}; '\
                     f'Рост: {all_data[7]}; '\
-                    f'Занимается спортом: {all_data[8]}; '\
-                    f'Времени спит: {all_data[9]}; '\
-                    f'Легко просыпается: {all_data[10]}; '\
-                    f'Энергии под конец дня: {all_data[11]}; '\
-                    f'Приемов пищи: {all_data[12]}; '\
-                    f'Рацион: {all_data[13]}; '\
-                    f'Алкоголь: {all_data[14]}; '\
-                    f'Диеты: {all_data[15]}; '\
-                    f'Аллергии: {all_data[16]};'\
+                    f'Занимается спортом: {all_data[8]}; ' + s9 + s10 + s11 + s12 + s13 + s14 + s15 + f'Аллергии: {all_data[16]};'\
                     f'Регулярный стул: {all_data[17]}; '\
                     f'Области тела исправить: {all_data[18]}; '\
                     f'Хочет похудеть: {all_data[19]}; '\
