@@ -831,6 +831,7 @@ def message_handler(event, stage, current_user, text):
             'phone': phone,
             'sex': sex,
             'comment': comment,
+            'country_code' = 'TH'
             'campaign_id':'967987',
             'sid1':'5901',
             'redirect_url':'https://line.me/en/'
