@@ -24,14 +24,7 @@ def create_userdata_table():
                         stage1 TEXT,stage2 TEXT,stage3 TEXT,
                         stage4 TEXT,stage5 TEXT,stage6 TEXT,
                         stage7 TEXT,stage8 TEXT,stage9 TEXT,
-                        stage10 TEXT,stage11 TEXT,stage12 TEXT,
-                        stage13 TEXT,stage14 TEXT,stage15 TEXT,
-                        stage16 TEXT,stage17 TEXT,stage18 TEXT,
-                        stage19 TEXT,stage20 TEXT,stage21 TEXT,
-                        stage22 TEXT,stage23 TEXT,stage24 TEXT,
-                        stage25 TEXT,stage26 TEXT,stage27 TEXT,
-                        stage28 TEXT,stage29 TEXT, stage30 TEXT,
-                        stage31 TEXT);'''
+                        stage10 TEXT);'''
     post_sql_query(orders_query)
 
 

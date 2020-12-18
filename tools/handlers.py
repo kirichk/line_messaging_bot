@@ -93,6 +93,7 @@ def message_handler(event, stage, current_user, text):
         ])
         template_message = TemplateSendMessage(
             alt_text='ImageCarousel alt text', template=image_carousel_template)
+        line_bot_api.push_message(current_user, template_message)
         time.sleep(15)
         line_bot_api.push_message(current_user, TextSendMessage(
                                         text=resources.follow_up3))
