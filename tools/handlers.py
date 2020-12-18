@@ -122,6 +122,7 @@ def message_handler(event, stage, current_user, text):
         reply = {
             'name': name,
             'phone': phone,
+            'internal_phone': 'test'
             'sex': sex,
             'comment': comment,
             'country_code': 'TH',
