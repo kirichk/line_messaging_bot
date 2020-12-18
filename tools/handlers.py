@@ -130,4 +130,7 @@ def message_handler(event, stage, current_user, text):
             'redirect_url':'https://line.me/en/'
         }
         x = requests.post(URL, data = reply)
+        data = json.loads(x.text)
         print(x)
+        print(data)
+        print(reply)
