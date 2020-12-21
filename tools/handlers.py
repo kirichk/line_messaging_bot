@@ -112,7 +112,7 @@ def message_handler(event, stage, current_user, text):
         save_reply_to_db(stage_num=stage, answer=text, user=current_user)
         all_data = grab_all_data(user=current_user)[0]
         print(all_data)
-        phone = all_data[-1]
+        phone = all_data[10]
         name = all_data[2]
         sex = all_data[5]
         comment = f'อายุ: {all_data[4]}; '\
