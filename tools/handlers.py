@@ -127,7 +127,7 @@ def message_handler(event, stage, current_user, text):
             'sex': sex,
             'comment': comment,
             'country_code': 'TH',
-            'campaign_id':'967987',
+            'campaign_id':'972401',
             'sid1':'5901',
             'redirect_url':'https://line.me/en/'
         }
