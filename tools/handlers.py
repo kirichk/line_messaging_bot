@@ -121,7 +121,7 @@ def message_handler(event, stage, current_user, text):
                     f'พลังงานที่เหลือในช่วงท้ายของวัน: {all_data[8]}; '\
                     f'อาหาร: {all_data[9]}; '
         reply = {
-            'name': 'สม8จิจจต',
+            'name': name,
             'phone': phone,
             'internal_phone': '0629692931',
             'sex': sex,
